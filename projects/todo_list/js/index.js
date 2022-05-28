@@ -1,5 +1,5 @@
-const clock = document.getElementById('todo_clock');
-const list  = document.getElementById('todo_list');
+const clock     = document.getElementById('todo_clock');
+const todo_list = document.getElementById('todo_list');
 
 /**
  * @author 2022-05-28 21:48:45 동환
