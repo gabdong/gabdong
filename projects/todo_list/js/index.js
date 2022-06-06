@@ -1,5 +1,8 @@
-const clock     = document.getElementById('todo_clock');
-const todoList  = document.getElementById('todo_list');
+const clock         = document.getElementById('todo_clock');
+const todoList      = document.getElementById('todo_list');
+const addTodoBtn    = document.getElementById('add_todo_button');
+const addTodoInput  = document.getElementById('add_todo_input');
+
 
 /**
  * @author 2022-05-28 21:48:45 동환
@@ -17,12 +20,53 @@ activeClock();
 const clock_interval = setInterval(activeClock, 1000);
 
 /**
+ * @author 2022-06-06 16:46:49 동환
+ * 
+ * @category add todolist
+ * 
+ * @param {Event} e 
+ */
+function addTodo(e) {
+
+    const todoContent   = addTodoInput.value;
+    const todoItem      = createTodoItem(todoContent);
+    
+    todoList.appendChild(todoItem);
+}
+
+/**
+ * @author 2022-06-06 16:49:13 동환
+ * 
+ * @category todo item 생성
+ * 
+ * @param {String} content 
+ * 
+ * @return {HTMLElement} todo list item
+ */
+function createTodoItem(content) {
+
+    const createDiv = document.createElement('div');
+
+    return createDiv;
+
+}
+addTodoInput.addEventListener('keyup', (e) => {
+
+    if(e.keyCode == 13) addTodo();
+});
+addTodoBtn.addEventListener('click', addTodo);
+
+
+
+//TODO ---------- common.js 로 옮기기 ----------
+/**
  * @author 2022-05-28 21:01:07 동환
  * 
  * @category Date Object -> YYYY.MM.DD(day) HH:MM:SS 형태로 변환
  * 
  * @param {Object} dateObj : Date Object
  * 
+ * TODO 좀더 여러 형식으로 사용할수 있도록 변경예정
  * @returns {String} result
  */
 function date_format(dateObj = new Date(), lang = 'ko') {

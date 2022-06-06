@@ -12,9 +12,42 @@ html, body {
 }
 
 .todo_clock_wrap {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 .todo_clock {
     font-size: 50px;
     color: #ffffff;
+}
+
+.todo_list_wrap {
+    width: 100%;
+    max-width: 500px;
+}
+.todo_add_wrap {
+    margin-bottom: 14px;
+}
+.todo_add_wrap > input {
+    width: 100%;
+    margin-right: 14px;
+    background: rgba(255, 255, 255, 0.8);
+    transition: 0.2s;
+}
+.todo_add_wrap > input:focus,
+.todo_add_wrap > input:hover {
+    background: #ffffff;
+}
+.todo_add_wrap > button {
+    white-space: nowrap;
+}
+
+.todo_list {
+    width: 100%;
+    min-height: 200px;
+    padding: 12px;
+    background: rgb(255, 255, 255, 0.8);
+    border-radius: 8px;
+    transition: 0.2s;
+}
+.todo_list:hover {
+    background: #ffffff;
 }
