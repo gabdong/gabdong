@@ -3,7 +3,6 @@ const todoList      = document.getElementById('todo_list');
 const addTodoBtn    = document.getElementById('add_todo_button');
 const addTodoInput  = document.getElementById('add_todo_input');
 
-
 /**
  * @author 2022-05-28 21:48:45 동환
  * 
@@ -28,9 +27,12 @@ const clock_interval = setInterval(activeClock, 1000);
  */
 function addTodo(e) {
 
-    const todoContent   = addTodoInput.value;
-    const todoItem      = createTodoItem(todoContent);
-    
+    const todoContent = addTodoInput.value;
+
+    if(!todoContent || todoContent == '') return alert('할일을 입력해주세요.');
+
+    const todoItem = createTodoItem(todoContent);
+
     todoList.appendChild(todoItem);
 }
 
@@ -45,11 +47,23 @@ function addTodo(e) {
  */
 function createTodoItem(content) {
 
-    const createDiv = document.createElement('div');
+    const todoItemWrap = document.createElement('div');
+    todoItemWrap.className = 'todo_item_wrap disFlex space_between';
 
-    return createDiv;
+    const todoContent = document.createElement('p');
+    todoContent.textContent = content;
+    todoContent.className = 'todo_item_text normal_text flex_grow_1';
+
+    const todoItemEditWrap = document.createElement('div');
+    todoItemEditWrap.className = 'todo_item_edit_wrap';
+
+    todoItemWrap.appendChild(todoContent);
+    todoItemWrap.appendChild(todoItemEditWrap);
+
+    return todoItemWrap;
 
 }
+//g add todo event
 addTodoInput.addEventListener('keyup', (e) => {
 
     if(e.keyCode == 13) addTodo();
