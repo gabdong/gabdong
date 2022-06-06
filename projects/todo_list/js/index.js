@@ -1,68 +1,67 @@
 const clock     = document.getElementById('todo_clock');
-const todo_list = document.getElementById('todo_list');
+const todoList  = document.getElementById('todo_list');
 
 /**
  * @author 2022-05-28 21:48:45 동환
  * 
  * @category clock active
  */
-function active_clock() {
+function activeClock() {
 
     const time      = new Date();
-    const time_str  = date_format(time, 'en');
+    const time_str  = date_format(time, 'ko');
 
     clock.textContent = time_str;
 }
-const clock_interval = setInterval(active_clock, 1000);
+activeClock();
+const clock_interval = setInterval(activeClock, 1000);
 
 /**
  * @author 2022-05-28 21:01:07 동환
  * 
  * @category Date Object -> YYYY.MM.DD(day) HH:MM:SS 형태로 변환
  * 
- * @param {Object} obj : Date Object
+ * @param {Object} dateObj : Date Object
  * 
  * @returns {String} result
  */
-function date_format(obj, lang = 'ko') {
+function date_format(dateObj = new Date(), lang = 'ko') {
 
-    const date_obj = obj ? obj : new Date();
+    const year  = dateObj.getFullYear();
+    const month = add_zero(dateObj.getMonth() + 1);
+    const date  = add_zero(dateObj.getDate());
+    const day   = dateObj.getDay();
 
-    const year  = date_obj.getFullYear();
-    const month = add_zero(date_obj.getMonth() + 1);
-    const date  = add_zero(date_obj.getDate());
-    const day   = date_obj.getDay();
-
-    let day_str = '';
+    let dayStr = '';
     switch(lang) {
         case "ko":
-            if(day == 0) day_str = '일';
-            if(day == 1) day_str = '월';
-            if(day == 2) day_str = '화';
-            if(day == 3) day_str = '수';
-            if(day == 4) day_str = '목';
-            if(day == 5) day_str = '금';
-            if(day == 6) day_str = '토';
+            if(day == 0) dayStr = '일';
+            if(day == 1) dayStr = '월';
+            if(day == 2) dayStr = '화';
+            if(day == 3) dayStr = '수';
+            if(day == 4) dayStr = '목';
+            if(day == 5) dayStr = '금';
+            if(day == 6) dayStr = '토';
 
             break;
 
         case "en":
-            if(day == 0) day_str = 'Sun';
-            if(day == 1) day_str = 'Mon';
-            if(day == 2) day_str = 'Tue';
-            if(day == 3) day_str = 'Wed';
-            if(day == 4) day_str = 'Thu';
-            if(day == 5) day_str = 'Fri';
-            if(day == 6) day_str = 'Sat';
+            if(day == 0) dayStr = 'Sun';
+            if(day == 1) dayStr = 'Mon';
+            if(day == 2) dayStr = 'Tue';
+            if(day == 3) dayStr = 'Wed';
+            if(day == 4) dayStr = 'Thu';
+            if(day == 5) dayStr = 'Fri';
+            if(day == 6) dayStr = 'Sat';
 
             break;
     }
 
-    const hours     = add_zero(date_obj.getHours());
-    const minutes   = add_zero(date_obj.getMinutes());
-    const seconds   = add_zero(date_obj.getSeconds());
+    const hours     = add_zero(dateObj.getHours());
+    const minutes   = add_zero(dateObj.getMinutes());
+    const seconds   = add_zero(dateObj.getSeconds());
 
-    const result = `${year}.${month}.${date}(${day_str}) ${hours}:${minutes}:${seconds}`;
+    const result = `${year}.${month}.${date}(${dayStr}) ${hours}:${minutes}:${seconds}`;
 
     return result;
 }
