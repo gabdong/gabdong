@@ -1,6 +1,6 @@
 'use strict';
 
-import mysql from 'mysql2';
+import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
 import exp from 'constants';
 
@@ -12,7 +12,8 @@ const dbConfig = {
     host            : DB_HOST,
     user            : DB_USER,
     password        : DB_PASSWORD,
-    database        : DB_DATABASE
+    database        : DB_DATABASE,
+    port            : 9411
 };
 
 const pool = mysql.createPool(dbConfig);
